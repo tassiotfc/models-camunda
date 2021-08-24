@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1rz5yy7" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="OrderDrinkProcess" name="Order Drink Process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1hpu7cz</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1hpu7cz" sourceRef="StartEvent_1" targetRef="Activity_1id8vkv" />
+    <bpmn:sequenceFlow id="Flow_0pq0m9i" sourceRef="Activity_1id8vkv" targetRef="Activity_1ik525w" />
+    <bpmn:sequenceFlow id="Flow_16ysnr0" sourceRef="Activity_1ik525w" targetRef="Activity_0bk16k1" />
+    <bpmn:businessRuleTask id="Activity_1ik525w" name="Decide on Beverage" camunda:resultVariable="drink" camunda:decisionRef="Decision_1sdac88" camunda:mapDecisionResult="singleEntry">
+      <bpmn:incoming>Flow_0pq0m9i</bpmn:incoming>
+      <bpmn:outgoing>Flow_16ysnr0</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:userTask id="Activity_1id8vkv" name="Enter order details">
+      <bpmn:incoming>Flow_1hpu7cz</bpmn:incoming>
+      <bpmn:outgoing>Flow_0pq0m9i</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0bk16k1" name="View Beverage">
+      <bpmn:incoming>Flow_16ysnr0</bpmn:incoming>
+      <bpmn:outgoing>Flow_0nk4moe</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_0w8kico">
+      <bpmn:incoming>Flow_0nk4moe</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0nk4moe" sourceRef="Activity_0bk16k1" targetRef="Event_0w8kico" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="OrderDrinkProcess">
+      <bpmndi:BPMNEdge id="Flow_1hpu7cz_di" bpmnElement="Flow_1hpu7cz">
+        <di:waypoint x="188" y="117" />
+        <di:waypoint x="240" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0pq0m9i_di" bpmnElement="Flow_0pq0m9i">
+        <di:waypoint x="340" y="117" />
+        <di:waypoint x="420" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16ysnr0_di" bpmnElement="Flow_16ysnr0">
+        <di:waypoint x="520" y="117" />
+        <di:waypoint x="600" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nk4moe_di" bpmnElement="Flow_0nk4moe">
+        <di:waypoint x="700" y="117" />
+        <di:waypoint x="782" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07aqjrp_di" bpmnElement="Activity_1ik525w">
+        <dc:Bounds x="420" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1potlis_di" bpmnElement="Activity_1id8vkv">
+        <dc:Bounds x="240" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gc4rs9_di" bpmnElement="Activity_0bk16k1">
+        <dc:Bounds x="600" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0w8kico_di" bpmnElement="Event_0w8kico">
+        <dc:Bounds x="782" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
